@@ -1,0 +1,2 @@
+Nice refactoring without annotation and ioc https://github.com/javaFunAgain/magic_service_story 
+Examples of good practice https://github.com/javaFunAgain
