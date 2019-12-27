@@ -2,3 +2,4 @@ Nice refactoring without annotation and ioc https://github.com/javaFunAgain/magi
 Examples of good practice https://github.com/javaFunAgain
 https://github.com/peshrus/revolut-interview-backend-2019
 https://github.com/peshrus/codility
+Spring boot and vuejs example: https://github.com/jonashackt/spring-boot-vuejs
