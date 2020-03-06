@@ -7,3 +7,6 @@ https://spring.io/guides/tutorials/react-and-spring-data-rest/#react-and-spring-
 
 Quarkus:
 https://stackoverflow.com/questions/59919359/quarkus-heroku-and-different-environments
+
+kotlin archetype:
+https://gantsign.com/maven-archetypes/kotlin-application-maven-archetype/
