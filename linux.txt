@@ -1,53 +1,6 @@
 debian latest firefox:
 
-Option #1  Install the latest Firefox on Debian Stable or Testing by using the Debian Unstable repository
-
-1. Add the Debian Unstable repository on Debian 10 Buster (Stable) or Debian Bullseye (Testing).
-
-Start by opening /etc/apt/sources.list as root with a text editor, like Nano:
-
-sudo nano /etc/apt/sources.list
-
-
-At the end of this file (don't modify anything) add the following line:
-
-deb http://deb.debian.org/debian/ unstable main contrib non-free
-
-
-After adding this, save the file and exit the text editor (if you're using Nano press Ctrl + O followed Enter to save the file, and exit Nano using Ctrl + X).
-
-2. Set a low pin priority for the Debian Unstable repository so your system doesn't automatically install packages from it unless you manually specify this.
-
-Create and open a file /etc/apt/preferences.d/99pin-unstable as root with a text editor, for example using Nano command line text editor:
-
-sudo nano /etc/apt/preferences.d/99pin-unstable
-
-
-Paste the following in this file:
-
-Package: *
-Pin: release a=stable
-Pin-Priority: 900
-
-Package: *
-Pin release a=unstable
-Pin-Priority: 10
-
-
-After adding this, save the file and exit the text editor (if you're using Nano press Ctrl + O, then press Enter to save the file, and exit using Ctrl + X).
-
-3. Install the latest regular (non-ESR) Firefox on Debian 10 Buster (Stable) or Testing (Bullseye).
-
-You can now install the latest normal Firefox on Debian 10 Buster (Stable) or Bullseye (Testing):
-
-sudo apt update
-sudo apt install -t unstable firefox
-
-Option #2: Manually install the latest normal Firefox on Debian Stable or Testing
-
-Another option of having the latest regular (non-ESR) Firefox on Debian 10 Buster (Stable) or Bullseye (Testing) is to install it manually, by using the binaries provided by Mozilla. This has the advantage that it can automatically update itself, receiving the update as soon as Mozilla releases them.
-
-1. Download Firefox for Linux (as provided by Mozilla) and extract it.
+Download Firefox for Linux (as provided by Mozilla) and extract it.
 
 Head over to the Firefox download page and click the Download Now button to get the latest version of Firefox.
 
@@ -56,29 +9,5 @@ Extract the downloaded Linux Firefox build and move it to a folder on your syste
 E.g. if you have the firefox folder extracted to your home directory, move it to /opt and change the /opt/firefox folder and /opt/firefox/firefox permissions to 755 (to allow it to auto-update) using:
 
 sudo mv firefox /opt/
- or 
- curl "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux&lang=en-US" | bunzip2 | (cd /opt; sudo tar xf -)
-    /opt/firefox/firefox
-
 sudo chmod 755 /opt/firefox
 sudo chmod 755 /opt/firefox/firefox
-
-
-2. Add Firefox to the applications menu.
-
-Next you'll want to add Firefox to your menu. On GTK-based desktop environments you can add applications to your menu by using MenuLibre. Install it on Debian using:
-
-sudo apt install menulibre
-
-
-On Qt / KDE based desktop environments you can add (and edit) applications to your menu with the help of KDE Menu Editor, which can be installed on Debian using:
-
-sudo apt install kmenuedit
-
-
-The instructions for adding a new application to the menu are very similar for both MenuLibre and KDE Menu Editor. Below I'll only explain the steps for MenuLibre.
-
-Run MenuLibre (it may be shown as Menu Editor in the applications menu), click on the Internet category in the sidebar, then click the + button in the toolbar and choose Add Launcher:
-
-https://www.reddit.com/r/debian/comments/egykrk/how_to_install_the_latest_firefox_on_debian/
-https://www.linuxuprising.com/2019/12/how-to-install-latest-firefox-non-esr.html?m=1
