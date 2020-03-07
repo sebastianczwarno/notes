@@ -1,13 +1,12 @@
-debian latest firefox:
-
-Download Firefox for Linux (as provided by Mozilla) and extract it.
-
-Head over to the Firefox download page and click the Download Now button to get the latest version of Firefox.
-
-Extract the downloaded Linux Firefox build and move it to a folder on your system where your user has write permissions, so Firefox can auto-update itself. For example, you could move the Firefox folder into /opt/firefox, and change the /opt/firefox folder and /opt/firefox/firefox permissions to 755.
-
-E.g. if you have the firefox folder extracted to your home directory, move it to /opt and change the /opt/firefox folder and /opt/firefox/firefox permissions to 755 (to allow it to auto-update) using:
-
+# debian latest firefox:
+# Go to current user download folder
+cd ~/Download
+# Download latest firefox from nightly channel
+wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US'
+# Unzip archive 
+tar -xf firefox.tar.bz2
+# Move to unziped archive to /opt
 sudo mv firefox /opt/
+# Change permission to 775 to allow auto update in user context
 sudo chmod 755 /opt/firefox
 sudo chmod 755 /opt/firefox/firefox
