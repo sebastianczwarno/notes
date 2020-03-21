@@ -10,3 +10,4 @@ sudo mv firefox /opt/
 # Change permission to 775 to allow auto update in user context
 sudo chmod 755 /opt/firefox
 sudo chmod 755 /opt/firefox/firefox
+sudo chown -R /opt/firefox $USER
