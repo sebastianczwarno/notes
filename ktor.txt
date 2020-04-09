@@ -1,0 +1,4 @@
+Serving angular/react files from jar:
+https://stackoverflow.com/questions/50260174/how-to-organize-frontend-and-backend-for-kotlin-spa-with-webpack
+https://kotlinlang.org/docs/reference/multiplatform.html#multiplatform-projects
+https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-a-multiplatform-project
