@@ -4,6 +4,8 @@ https://blogs.gnome.org/tbernard/2020/01/17/doing-things-that-scale/
 
 rpm-ostree reset
 
+sudo rpm-ostree install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 rpm-ostree install \
   fedora-workstation-repositories \
   ffmpeg-libs \
@@ -22,10 +24,9 @@ rpm-ostree install \
   libreoffice \
   mc git tig \
   chromium \
-  tilix
+  tilix \
+  fuse-exfat exfat-utils \
+  keepassxc
 
 
-rpm-ostree install 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm'
-rpm-ostree install 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-32.noarch.rpm'
-
-rpm-ostree install fuse-exfat exfat-utils
+sudo rpm-ostree install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
