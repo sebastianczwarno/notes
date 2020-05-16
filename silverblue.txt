@@ -1,0 +1,25 @@
+https://elektrubadur.se/first-month-with-fedora-silverblue/
+https://gitlab.com/bkhl/toolboxes
+https://blogs.gnome.org/tbernard/2020/01/17/doing-things-that-scale/
+
+rpm-ostree reset
+
+rpm-ostree install \
+  fedora-workstation-repositories \
+  ffmpeg-libs \
+  google-chrome-stable \
+  gparted \
+  langpacks-en \
+  libgnome-keyring \
+  nextcloud-client \
+  qemu \
+  vim-enhanced \
+  vim-X11 \
+  virt-manager \
+  wl-clipboard \
+  evolution
+
+rpm-ostree install 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm'
+rpm-ostree install 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-32.noarch.rpm'
+
+rpm-ostree install fuse-exfat exfat-utils
