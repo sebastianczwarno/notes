@@ -1,3 +1,15 @@
+-r, --recursive           	Search files recursively
+-R, --dereference-recursive     Search files recursively and follow symlinks
+    --include=FILE_PATTERN      search only files that match FILE_PATTERN
+    --exclude=FILE_PATTERN      skip files and directories matching FILE_PATTERN
+    --exclude-from=FILE   	skip files matching any file pattern from FILE
+    --exclude-dir=PATTERN 	directories that match PATTERN will be skipped.
+-L, --files-without-match 	Print file names containing no match
+-l, --files-with-matches  	Print string containing file names only
+-i, --ignore-case         	ignore case of search string
+-e, --regexp=PATTERN      	Use patter to search or specify multiple search strings
+-w, --word-regexp         	force to match whole words 
+
 1. Search Single String in All Files
 
 Below example command will search string “tecadmin” in all files in /var/log directory and its sub-directories.
