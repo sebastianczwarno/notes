@@ -1,2 +1,6 @@
 Quarkus and kotlin
 https://piotrminkowski.com/2020/08/09/guide-to-quarkus-with-kotlin/
+
+Receiving files:
+https://stackoverflow.com/questions/61949759/how-to-handle-large-file-uploads-in-quarkus
+https://quarkus.io/guides/rest-client-multipart
