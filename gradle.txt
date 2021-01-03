@@ -1,0 +1,1 @@
+Kotlin dsl build npm frontend and copy into jar: https://dev.to/darkes/using-gradle-s-kotlin-dsl-to-bundle-react-with-a-spring-boot-web-application-355k
