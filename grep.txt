@@ -46,3 +46,8 @@ grep -rlw --exclude="*.txt" -e "tecadmin" /var/log
 You can also exclude some directoires to skip search inside it. For example, do not search string files inside any folder having http in their name.
 
 grep -rlw --exclude-dir="*http*" -e "tecadmin" /var/log
+
+
+6. Search in all files with name pattern for a word and ignore case send output to grep search for a word ignore case
+
+grep -r --include=*.txt.2020-11-* -ie "error" | grep -ie "promote"
