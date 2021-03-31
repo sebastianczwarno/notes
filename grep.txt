@@ -51,3 +51,7 @@ grep -rlw --exclude-dir="*http*" -e "tecadmin" /var/log
 6. Search in all files with name pattern for a word and ignore case send output to grep search for a word ignore case
 
 grep -r --include=*.txt.2020-11-* -ie "error" | grep -ie "promote"
+
+7. Recursive replace v4.6.1 string in all .csproj files with v4.7.2
+
+grep -rlw --include="*.csproj" -e "v4.6.1" | xargs sed -i 's/v4.6.1/v4.7.2/g'
