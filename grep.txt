@@ -52,6 +52,6 @@ grep -rlw --exclude-dir="*http*" -e "tecadmin" /var/log
 
 grep -r --include=*.txt.2020-11-* -ie "error" | grep -ie "promote"
 
-7. Recursive replace v4.6.1 string in all .csproj files with v4.7.2
+7. Recursive find all .csproj files witch contains string v4.6.1 and replace it with v4.7.2
 
 grep -rlw --include="*.csproj" -e "v4.6.1" | xargs sed -i 's/v4.6.1/v4.7.2/g'
