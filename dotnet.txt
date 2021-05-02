@@ -1,2 +1,11 @@
 https://github.com/dotnet/format
 https://github.com/quozd/awesome-dotnet
+
+dotnet & xlsx excel files:
+https://github.com/ClosedXML/ClosedXML/blob/develop/ClosedXML/Excel/XLWorkbook.cs
+https://stackoverflow.com/questions/45717343/how-do-you-open-a-closedxml-workbook-from-a-stream
+
+
+asp dotnet react & angular:
+https://www.youtube.com/playlist?list=PLjC4UKOOcfDRIsN7PpvSKZG1L7GArAjgB
+https://github.com/CodAffection?tab=repositories
