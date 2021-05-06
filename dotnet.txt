@@ -9,3 +9,6 @@ https://stackoverflow.com/questions/45717343/how-do-you-open-a-closedxml-workboo
 asp dotnet react & angular:
 https://www.youtube.com/playlist?list=PLjC4UKOOcfDRIsN7PpvSKZG1L7GArAjgB
 https://github.com/CodAffection?tab=repositories
+
+React + TypeScript + TDD in Rider
+https://www.youtube.com/watch?v=p7QwwzP-et4
