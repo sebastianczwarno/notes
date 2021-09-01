@@ -14,7 +14,10 @@ https://github.com/CodAffection?tab=repositories
 React + TypeScript + TDD in Rider
 https://www.youtube.com/watch?v=p7QwwzP-et4
 
-switching databases based on the environment:
+Web.config environment variables:
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config?view=aspnetcore-5.0
+
+Switching databases based on the environment:
 https://jasonwatmore.com/post/2020/01/03/aspnet-core-ef-core-migrations-for-multiple-databases-sqlite-and-sql-server
 
 ASP.NET Core - EF Core Migrations for Multiple Databases (SQLite and SQL Server)
