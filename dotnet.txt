@@ -16,6 +16,7 @@ https://www.youtube.com/watch?v=p7QwwzP-et4
 
 Web.config environment variables:
 https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config?view=aspnetcore-5.0
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-5.0
 
 Switching databases based on the environment:
 https://jasonwatmore.com/post/2020/01/03/aspnet-core-ef-core-migrations-for-multiple-databases-sqlite-and-sql-server
