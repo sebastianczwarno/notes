@@ -13,3 +13,148 @@ https://github.com/CodAffection?tab=repositories
 
 React + TypeScript + TDD in Rider
 https://www.youtube.com/watch?v=p7QwwzP-et4
+
+switching databases based on the environment:
+https://jasonwatmore.com/post/2020/01/03/aspnet-core-ef-core-migrations-for-multiple-databases-sqlite-and-sql-server
+
+ASP.NET Core - EF Core Migrations for Multiple Databases (SQLite and SQL Server)
+
+Example code tested with ASP.NET Core 3.1
+
+In this post we'll go through an example of how to setup an ASP.NET Core project with EF Core DB Contexts and Migrations that support multiple different database providers.
+
+The code snippets in this post are taken from this example ASP.NET Core API which I just finished updating to support multiple databases for different environments, specifically SQLite in development and SQL Server in production.
+
+The below steps show how to use a SQLite database in development and a SQL Server database in production, but you could switch these to any database providers you like that are supported by EF Core.
+
+Create Main EF Core DB Context for SQL Server
+
+Create the main DB context class that defines the entities available in the database via public DbSet<TEntity> properties, and configure it to connect to the production database (SQL Server in this case).
+
+Below is the main DB context from the example ASP.NET Core api linked above, it has the class name DataContext and is located in the /Helpers directory of the project, but you can choose any class name and directory you prefer.
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using WebApi.Entities;
+
+namespace WebApi.Helpers
+{
+    public class DataContext : DbContext
+    {
+        protected readonly IConfiguration Configuration;
+
+        public DataContext(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to sql server database
+            options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
+        }
+
+        public DbSet<User> Users { get; set; }
+    }
+}
+
+
+
+Create Development EF Core DB Context for SQLite
+
+Create a development DB context that inherits from the main DB context above and overrides the database provider in the OnConfiguring() method.
+
+Below is the development DB context from the example ASP.NET Core api that overrides the database provider to connect to SQLite instead of SQL Server. Having a second EF Core DB Context that derives from the main DB context is what enables the project to support multiple different database providers.
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+namespace WebApi.Helpers
+{
+    public class SqliteDataContext : DataContext
+    {
+        public SqliteDataContext(IConfiguration configuration) : base(configuration) { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to sqlite database
+            options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
+        }
+    }
+}
+
+
+
+Generate SQLite EF Core Migrations
+
+Run the following command to generate EF Core migrations for SQLite and store them in their own folder.
+
+dotnet ef migrations add InitialCreate --context SqliteDataContext --output-dir Migrations/SqliteMigrations
+
+
+Generate SQL Server EF Core Migrations
+
+Run the following command to generate EF Core migrations for SQL Server and store them in their own folder.
+
+The environment variable ASPNETCORE_ENVIRONMENT needs to be set to Production so the SQL Server DataContext class is configured with the .NET Core dependency injection system, see the ConfigureServices() method below.
+
+Configuring environment variables from the command line is slightly different on MacOS and Windows.
+Windows
+
+set ASPNETCORE_ENVIRONMENT=Production
+dotnet ef migrations add InitialCreate --context DataContext --output-dir Migrations/SqlServerMigrations
+
+
+MacOS
+
+ASPNETCORE_ENVIRONMENT=Production dotnet ef migrations add InitialCreate --context DataContext --output-dir Migrations/SqlServerMigrations
+
+
+Configure Startup.cs to use SQLite in Development and SQL Server in Production
+
+Below is a cut down version of the Startup.cs file from the example ASP.NET Core api that just includes the bits related to the EF Core DB context configuration and automatic database migration. The complete file is available here.
+
+Lines 23 - 26 configure which type of data context is injected by the .NET Core dependency injection system when a DataContext instance is required by a class. In production an instance of the main DataContext class is used which connects to SQL Server, otherwise (i.e. in development) an instance of the SqliteDataContext is used.
+
+An instance of the DataContext is injected as a parameter into the Configure() method, the data context instance is then used to apply any pending migrations to the database by calling the dataContext.Database.Migrate() method on line 35.
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using WebApi.Helpers;
+
+namespace WebApi
+{
+    public class Startup
+    {
+        private readonly IWebHostEnvironment _env;
+
+        public Startup(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // use sql server db in production and sqlite db in development
+            if (_env.IsProduction())
+                services.AddDbContext<DataContext>();
+            else
+                services.AddDbContext<DataContext, SqliteDataContext>();
+
+            ...
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataContext dataContext)
+        {
+            // migrate any database changes on startup (includes initial db creation)
+            dataContext.Database.Migrate();
+            
+            ...
+        }
+    }
+}
