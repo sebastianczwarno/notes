@@ -1,6 +1,12 @@
 https://github.com/dotnet/format
 https://github.com/quozd/awesome-dotnet
 
+vertical slice architecture:
+https://github.com/jbogard/ContosoUniversityDotNetCore/tree/master/ContosoUniversity
+https://github.com/pdevito3/craftsman
+https://jimmybogard.com/vertical-slice-architecture/
+https://jeremiahflaga.github.io/2019/05/20/vertical-slice-architecture-is-it-incompatible-with-clean-architecture/
+
 dotnet & xlsx excel files:
 https://github.com/ClosedXML/ClosedXML/blob/develop/ClosedXML/Excel/XLWorkbook.cs
 https://stackoverflow.com/questions/45717343/how-do-you-open-a-closedxml-workbook-from-a-stream
