@@ -1,6 +1,11 @@
 https://github.com/dotnet/format
 https://github.com/quozd/awesome-dotnet
 
+dotnet cli create migration with custom dbcontext:
+dotnet ef migrations add InitialCreate -p DnaManager.Infrastructure -s DnaManager.WebApp --context PostgreDataContext --output-dir Persistence/Migrations/PostgreMigrations
+
+
+
 vertical slice architecture:
 https://github.com/jbogard/ContosoUniversityDotNetCore/tree/master/ContosoUniversity
 https://github.com/pdevito3/craftsman
