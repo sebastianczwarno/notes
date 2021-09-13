@@ -1,1 +1,5 @@
 https://stackoverflow.com/questions/67295962/blaze-persistence-skip-null-parameters-in-where-expression
+https://vladmihalcea.com/jpa-criteria-api-bulk-update-delete/
+https://www.baeldung.com/jpa-hibernate-batch-insert-update
+https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#criteria-from
+https://stackoverflow.com/questions/23719237/mapping-jpa-or-hibernate-projection-query-to-dto-data-transfer-object
