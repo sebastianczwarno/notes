@@ -3,3 +3,4 @@ https://vladmihalcea.com/jpa-criteria-api-bulk-update-delete/
 https://www.baeldung.com/jpa-hibernate-batch-insert-update
 https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#criteria-from
 https://stackoverflow.com/questions/23719237/mapping-jpa-or-hibernate-projection-query-to-dto-data-transfer-object
+https://fullstackdeveloper.guru/2021/08/24/what-is-mapsid-used-for-in-jpa-hibernate-part-1/
