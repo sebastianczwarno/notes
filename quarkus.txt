@@ -7,3 +7,7 @@ https://quarkus.io/guides/rest-client-multipart
 
 https://quarkus.io/quarkus-workshops/super-heroes/#_heroservice_transactional_service
 https://stackoverflow.com/questions/66972941/what-are-the-best-practices-for-creating-a-quarkus-multi-module-project
+
+
+Multimodule
+https://github.com/lssoares/multi-maven-quarkus/blob/master/pom.xml
