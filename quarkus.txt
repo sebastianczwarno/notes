@@ -11,3 +11,5 @@ https://stackoverflow.com/questions/66972941/what-are-the-best-practices-for-cre
 
 Multimodule
 https://github.com/lssoares/multi-maven-quarkus/blob/master/pom.xml
+
+https://groups.google.com/g/quarkus-dev/c/8CWRjRsetr8?pli=1
