@@ -1,13 +1,17 @@
 # debian latest firefox:
-# Go to current user download folder
-cd ~/Download
-# Download latest firefox from nightly channel
-wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US'
-# Unzip archive 
-tar -xf firefox.tar.bz2
-# Move to unziped archive to /opt
-sudo mv firefox /opt/
-# Change permission to 775 to allow auto update in user context
-sudo chmod 755 /opt/firefox
-sudo chmod 755 /opt/firefox/firefox
-sudo chown -R $USER /opt/firefox
+cd ~/Download && wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US' && tar -xf firefox.tar.bz2 && sudo mv firefox /opt/ && sudo chmod 775 /opt/firefox && sudo chmod 775 /opt/firefox/firefox && sudo chown -R $USER /opt/firefox && 
+echo '[Desktop Entry]
+Name=Firefox Nightly
+Comment=Web Browser
+Exec=/opt/firefox/firefox %u
+Terminal=false
+Type=Application
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+Actions=Private;
+
+[Desktop Action Private]
+Exec=/opt/firefox/firefox --private-window %u
+Name=Open in private mode' >> firefox-nightly.desktop && sudo mv firefox-nightly.desktop /usr/share/applications/ && sudo ln -s /opt/firefox/firefox /usr/bin/firefox
