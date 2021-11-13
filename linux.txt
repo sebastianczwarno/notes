@@ -15,3 +15,32 @@ Actions=Private;
 [Desktop Action Private]
 Exec=/opt/firefox/firefox --private-window %u
 Name=Open in private mode' >> firefox-nightly.desktop && sudo mv firefox-nightly.desktop /usr/share/applications/ && sudo ln -s /opt/firefox/firefox /usr/bin/firefox
+
+# Hardware acceleration
+sudo apt install libavcodec-extra \
+  ttf-mscorefonts-installer       \
+  unrar                           \
+  gstreamer1.0-libav              \
+  gstreamer1.0-plugins-ugly       \
+  gstreamer1.0-vaapi;
+  
+sudo apt install intel-gpu-tools
+  
+# To enable the feature on xorg append:
+export MOZ_X11_EGL=1 to /etc/environment
+
+# To enable the feature on wayland append (not needed on 21.04):
+export MOZ_ENABLE_WAYLAND=1 to /etc/environment
+
+
+#Settings:
+Navigate to about:config in Firefox and set the following flags:
+media.ffmpeg.vaapi.enabled to true. Enables the feature.
+media.ffvpx.enabled to false. Disables the internal software decoders for VP8/VP9, which currently overrule hardware accelerated video.
+media.rdd-vpx.enabled to false. Needed due to Firefox trying to put some video decoding in a remote video process 46. This currently breaks accelerated VP8/VP9 video decoding.
+media.navigator.mediadatadecoder_vpx_enabled to true. Enables hardware decoding for WebRTC, which is used on web based video conferencing apps.
+
+# Verification
+Compositing: WebRender
+Window Protocol: wayland
+sudo intel_gpu_top
