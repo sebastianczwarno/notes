@@ -1,7 +1,10 @@
 https://github.com/dotnet/format
 https://github.com/quozd/awesome-dotnet
 
-dotnet cli create migration with custom dbcontext:
+# Dotnet running under development application with profile
+dotnet watch run --project DnaManager.WebApp --profile=DnaManager.WebApp
+
+# Dotnet cli create migration with custom dbcontext:
 dotnet ef migrations add InitialCreate -p DnaManager.Infrastructure -s DnaManager.WebApp --context PostgreDataContext --output-dir Persistence/Migrations/PostgreMigrations
 
 
