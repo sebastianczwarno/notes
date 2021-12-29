@@ -7,4 +7,6 @@ https://react.semantic-ui.com/
 
 
 https://www.ag-grid.com/react-data-grid/getting-started/
-https://www.youtube.com/watch?v=1kCPqLQcOKo
+https://www.youtube.com/watch?v=1kCPqLQcOKo - Build React Trading App with Redux toolkit | Typescript | Material ui | AG Grid and HighCharts
+https://www.youtube.com/watch?v=LlvBzyy-558 - React Hooks Course - All React Hooks Explained
+https://www.youtube.com/watch?v=k68j9xlbHHk - React Redux Tutorial For Beginners | Redux Toolkit Tutorial 2021
