@@ -1,0 +1,27 @@
+https://www.reddit.com/r/java/comments/rruosa/coming_from_c_to_java_world/
+
+Welcome, I've been in java for the last 5 years working in the industry and 7 altogether (started at university).
+
+I'll tell you some productivity tips so you can move fast
+
+    spring boot is the most popular framework, ignore the rest unless the employer wants you to work with quarkus/micronaut/vertx/akka. Spring is huge, every company uses it and they release(as of recent) a new update monthly. At end of next year, they will support native java compilation through GraalVM. It works now but is not production ready. Also ignore reactive stuff, is a fad, hard to debug, hard to read and maintain
+
+    learn hibernate/spring data jpa
+
+    make API requests to 3rd parties with feign-client / retrofit
+
+    build your app with maven/gradle. Most use maven but I prefer gradle
+
+    never return an entity as response, always create DTOs... I use this approach for an API: UpdateUserRequest/UpdateUserResponse or if they can be combined UpdateUserDTO. Now to map an entity to a DTO, use MapStruct library if you have a bit of time to learn it up or else write the mapping function by hand
+
+    use Lombok library to create Data classes (DTOs and generate getters, setters, constructors, builders etc). On java 17 you have Records functionality but nobody uses java 17 now since its been released last month I believe...if you start a new project, I would go with java 17 but expect problems in libraries... also not sure how good is the support for records in all the libraries since they decided to drop the "get/set" words from accessors but Lombok still uses them so I don't know how gonna work
+
+    Intellij is a must. Shift+space doesn't do something useful so I remapped the key to something I do more frequent: renaming stuff
+
+    Logging is done with log4j2 or logback. Both are being used though Lombok by annotating a class with @Log4j2 or @Slfj . This will inject a log field in your class so you can do log.warn("{}",1) . Log4j was exploited recently and is pretty bad...everyone talks about it being shit and their code is a mess...just use logback
+
+    Annotate stuff with @Nullable or @NonNull/@NotNull/@Nonnull when you think a parameter could /could not be null. You can also use Optional<Car> class to wrap a value... we don't have nullable operator
+
+    Use libraries to do checks on strings like StringUtils.isBlank(message) ... java doesn't have this function so you either do message!=null && message.isEmpty() or you import Apache utils
+
+    testing...Junit+mockito if you want to test only your code ... I've never written tests against an API...tried a bunch of times but is too difficult for me, I prefer to use Postman for that or Intellij can generate requests for you then you call them by hand.
