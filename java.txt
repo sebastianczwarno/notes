@@ -10,3 +10,12 @@ https://stackoverflow.com/questions/59919359/quarkus-heroku-and-different-enviro
 
 kotlin archetype:
 https://gantsign.com/maven-archetypes/kotlin-application-maven-archetype/
+
+
+performance testing:
+Apache-Benchmark
+https://httpd.apache.org/docs/2.4/programs/ab.html  to install: apt install apache2-utils
+https://rieckpil.de/howto-simple-load-testing-with-apache-benchmark/
+JMH
+https://rieckpil.de/howto-java-benchmarking-with-jmh-java-microbenchmark-harness/
+https://github.com/openjdk/jmh
