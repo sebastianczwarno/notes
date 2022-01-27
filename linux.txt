@@ -1,5 +1,5 @@
 # debian latest firefox:
-cd ~/Download && wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US' && tar -xf firefox.tar.bz2 && sudo mv firefox /opt/ && sudo chmod 775 /opt/firefox && sudo chmod 775 /opt/firefox/firefox && sudo chown -R $USER /opt/firefox && 
+cd ~/Downloads && wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US' && tar -xf firefox.tar.bz2 && sudo mv firefox /opt/ && sudo chmod 775 /opt/firefox && sudo chmod 775 /opt/firefox/firefox && sudo chown -R $USER /opt/firefox && 
 echo '[Desktop Entry]
 Name=Firefox
 Comment=Web Browser
