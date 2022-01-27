@@ -41,7 +41,8 @@ media.ffvpx.enabled to false. Disables the internal software decoders for VP8/VP
 media.rdd-vpx.enabled to false. Needed due to Firefox trying to put some video decoding in a remote video process 46. This currently breaks accelerated VP8/VP9 video decoding.
 media.navigator.mediadatadecoder_vpx_enabled to true. Enables hardware decoding for WebRTC, which is used on web based video conferencing apps.
 
-# Verification
+# Verification under about:support
 Compositing: WebRender
 Window Protocol: wayland
-sudo intel_gpu_top
+# under terminal
+sudo apt install intel-gpu-tools && sudo intel_gpu_top
