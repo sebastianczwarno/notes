@@ -40,8 +40,9 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnet
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-5.0#validation
 
 Minimal apis & feature architecture:
-https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d - performance vs controller
 https://timdeschryver.dev/blog/maybe-its-time-to-rethink-our-project-structure-with-dot-net-6#whats-a-minimal-web-api
+https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d - performance vs controller
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d
 https://github.com/martincostello/dotnet-minimal-api-integration-testing?WT.mc_id=-blog-scottha
 https://dev.to/jamesmh/the-life-changing-and-time-saving-magic-of-feature-focused-code-organization-1708
