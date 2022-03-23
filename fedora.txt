@@ -8,4 +8,4 @@ fastestmirror=True
 max_parallel_downloads=10
 defaultyes=True
 
-sudo sh -c "echo fastestmirror=True \ max_parallel_downloads=10 \ defaultyes=True >> /etc/hosts"
+sudo sh -c "echo fastestmirror=True \ max_parallel_downloads=10 \ defaultyes=True >> /etc/dnf/dnf.conf"
