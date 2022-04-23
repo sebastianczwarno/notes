@@ -44,6 +44,8 @@ sudo apt install intel-gpu-tools
 # To enable the feature on xorg append:
 export MOZ_X11_EGL=1 to /etc/environment
 
+firefox -> about:config -> media.ffmpeg.vaapi.enabled -> true
+
 # To enable the feature on wayland append (not needed on 21.04):
 sudo sh -c "echo 'export MOZ_ENABLE_WAYLAND=1' >> /etc/environment"
 
