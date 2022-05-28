@@ -27,7 +27,7 @@ sudo apt-get install -y dotnet-sdk-6.0
 
 #rider/idea
 wget https://download.jetbrains.com/rider/JetBrains.Rider-2022.1.1.tar.gz && tar -xf JetBrains.Rider-2022.1.1.tar.gz && \
-mv 'JetBrains Rider-2021.3.3' rider && sudo mv rider /opt/ && sudo chmod 775 /opt/rider/ && \
+mv 'JetBrains Rider-2022.1.1' rider && sudo mv rider /opt/ && sudo chmod 775 /opt/rider/ && \
 sudo chown -R $USER /opt/rider/ && sudo chown -R $USER /opt/rider/bin/ && sudo chmod 775 /opt/rider/bin/rider.sh && \
 sudo ln -s /opt/rider/bin/rider.sh /usr/bin/rider
 
