@@ -13,3 +13,7 @@ Multimodule
 https://github.com/lssoares/multi-maven-quarkus/blob/master/pom.xml
 
 https://groups.google.com/g/quarkus-dev/c/8CWRjRsetr8?pli=1
+
+
+https://quarkiverse.github.io/quarkiverse-docs/quarkus-quinoa/dev/
+https://github.com/quarkiverse/quarkus-jooq
