@@ -19,8 +19,9 @@ Exec=/opt/firefox/firefox --private-window %u
 Name=Open in private mode' >> firefox.desktop && sudo mv firefox.desktop /usr/share/applications/ && sudo ln -s /opt/firefox/firefox /usr/bin/firefox
 
 # To enable the feature on xorg append:
-export MOZ_X11_EGL=1 to /etc/environment
+sudo sh -c "echo 'export MOZ_ENABLE_WAYLAND=1' >> /etc/environment"
 
+# about:config
 firefox -> about:config -> media.ffmpeg.vaapi.enabled -> true
 
 
