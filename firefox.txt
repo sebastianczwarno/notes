@@ -23,6 +23,15 @@ export MOZ_X11_EGL=1 to /etc/environment
 
 firefox -> about:config -> media.ffmpeg.vaapi.enabled -> true
 
+
+# Hardware acceleration
+sudo apt install libavcodec-extra \
+  ttf-mscorefonts-installer       \
+  unrar                           \
+  gstreamer1.0-libav              \
+  gstreamer1.0-plugins-ugly       \
+  gstreamer1.0-vaapi;
+
 Flatpack:
 
 If you have installed Firefox Flatpak system-wide, then run:
