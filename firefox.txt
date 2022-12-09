@@ -42,3 +42,7 @@ If you have installed Firefox Flatpak system-wide, then run:
 If you have installed Firefox Flatpak per user, then run:
 
 $ flatpak --user override --socket=wayland --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
+
+# Verification under about:support
+Compositing: WebRender
+Window Protocol: wayland
