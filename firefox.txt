@@ -1,0 +1,34 @@
+
+# debian latest firefox:
+cd ~/Downloads && wget -O firefox.tar.bz2 --content-disposition 'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US' && tar -xf firefox.tar.bz2 && sudo mv firefox /opt/ && sudo chmod 775 /opt/firefox && sudo chmod 775 /opt/firefox/firefox && sudo chown -R $USER /opt/firefox && 
+echo '[Desktop Entry]
+Name=Firefox
+Comment=Web Browser
+Exec=/opt/firefox/firefox %u
+Terminal=false
+Type=Application
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+Actions=Private;
+StartupWMClass=firefox
+
+[Desktop Action Private]
+Exec=/opt/firefox/firefox --private-window %u
+Name=Open in private mode' >> firefox.desktop && sudo mv firefox.desktop /usr/share/applications/ && sudo ln -s /opt/firefox/firefox /usr/bin/firefox
+
+# To enable the feature on xorg append:
+export MOZ_X11_EGL=1 to /etc/environment
+
+firefox -> about:config -> media.ffmpeg.vaapi.enabled -> true
+
+Flatpack:
+
+If you have installed Firefox Flatpak system-wide, then run:
+
+# flatpak override --socket=wayland --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
+
+If you have installed Firefox Flatpak per user, then run:
+
+$ flatpak --user override --socket=wayland --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
