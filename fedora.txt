@@ -55,8 +55,10 @@ sudo dnf install @multimedia @sound-and-video ffmpeg-libs gstreamer1-plugins-{ba
 flatpak install flathub org.freedesktop.Platform.ffmpeg-full
 
 
+#############################
+############################ slow boot:
 
-slow boot:
+systemd-analyze blame
 
 systemd-analyze plot > /tmp/test.svg && xdg-open /tmp/test.svg
 
