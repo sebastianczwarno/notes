@@ -60,6 +60,8 @@ flatpak install flathub org.freedesktop.Platform.ffmpeg-full
 
 systemd-analyze blame
 
+systemd-analyze critical-chain
+
 systemd-analyze plot > /tmp/test.svg && xdg-open /tmp/test.svg
 
 To disable, run sudo systemctl mask NetworkManager-wait-online.service
