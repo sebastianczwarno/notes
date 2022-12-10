@@ -53,3 +53,21 @@ sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=Pack
 sudo dnf groupupdate sound-and-video
 sudo dnf install @multimedia @sound-and-video ffmpeg-libs gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav lame\*
 flatpak install flathub org.freedesktop.Platform.ffmpeg-full
+
+
+
+slow boot:
+
+That's probably the wrong solution to the problem. If network-online is delaying boot, then right thing to do is figure out what depends on network-online, and of those things determine what can delay the login process, and possibly disable that instead:
+
+systemctl show -p WantedBy,RequiredBy,Before network-online.target
+
+Disabling NM-w-o will most likely break the service that's bringing it into the boot chain, and at that point you have a service loaded and broken, which is worse than a service that you've disabled.
+
+If troubleshooting this on your own seems like a high bar, then I'd suggest starting by disabling the iscsi service if it is installed, and see if that improves boot time. It's known to be an issue, currently:
+
+https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/thread/HACVEJ3FMOIM2TOENOVH5CPOUNR7NCMS/#5LTJ237DIWDRQFYPROAM5S3HJFFZC6YR
+
+systemctl disable iscsi
+
+https://www.reddit.com/r/Fedora/comments/uujt2g/slow_boot_times_fedora_36/
