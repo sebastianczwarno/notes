@@ -28,3 +28,28 @@ sudo dnf swap --enablerepo=rpmfusion-free-updates-testing mesa-va-drivers mesa-v
 or
 
 sudo dnf swap --enablerepo=rpmfusion-free-updates-testing mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
+
+Here is a solution that works on Fedora 37.
+
+First, set up RPM Fusion repos:
+
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+# nonfree repository is not needed, you can skip this command
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+Then install mesa-va-drivers-freeworld and mesa-vdpau-drivers-freeworld
+
+sudo dnf install mesa-va-drivers-freeworld mesa-vdpau-drivers-freeworld
+
+Alternatively, if mesa-va-drivers or mesa-vdpau-drivers are already installed, use swap instead:
+
+sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
+sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
+Optional: Installing additional non-hardware codecs
+
+sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf groupupdate sound-and-video
+sudo dnf install @multimedia @sound-and-video ffmpeg-libs gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav lame\*
+flatpak install flathub org.freedesktop.Platform.ffmpeg-full
