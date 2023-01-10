@@ -1,1 +1,72 @@
 https://limadelrey.medium.com/vert-x-4-how-to-build-a-reactive-restful-web-service-dd845e3d0b66
+https://reactiverse.io/vertx-maven-plugin/
+https://stackoverflow.com/questions/55352588/vertx-how-to-separate-routers-to-a-different-class-keeping-a-single-verticle
+
+
+
+
+
+You can for example extract your vehicle routes in a different handler. Then in the handler you can choose to implement your business logic there or better send a message through the eventbus, consume that message in any other Verticle, do your business logic there, and reply with an answer for the message, which you will send as a response.
+
+router.route("/vehicles/*").handler(VehicleHandler.create(vertx, router));
+
+VehicleHandler
+
+public interface VehicleHandler extends Handler<RoutingContext> {
+    static VehicleHandler create(Vertx vertx, Router router) {
+        return new VehicleHandlerImpl(vertx, router);
+    }
+}
+
+VehicleHandlerImpl
+
+public class VehicleHandlerImpl implements VehicleHandler {
+
+    private Router router;
+
+    public VehicleHandlerImpl(Vertx vertx, Router router) {
+         this.router = router;
+         router.get("/:id/").handler(this::getVehicle);
+         router.post("/:id/trips/:tripId/reports").handler(this::postReports);
+         router.post(":id/journey").handler(this::postJourney);      
+    }
+
+    @Override
+    public void handle(final RoutingContext ctx) {
+         router.handleContext(ctx);
+    }
+
+    private void getVehicle(RoutingContext ctx) {
+         //Option A: do you business logic here
+    }
+
+    private void postReports(RoutingContext ctx) {
+        //Option B: send an eventbus message, handle the message in the MainVerticle and serve the response here   
+    }
+
+    private void postJourney(RoutingContext ctx) {
+        //Option C: send an eventbus message, handle the message in a new Verticle and serve the response here 
+    }
+}
+
+
+
+// Main Clss    
+class Main : AbstractVerticle() {
+    override fun start() {
+        val router = Router.router(vertx)    
+        router.route().handler(BodyHandler.create())
+        router.get("/vehicles/:id").handler { req -> Controller.get_vehicle(req)}
+        router.get("/vehicles/:id/journey").handler{req-> Controller.startJourney(req)}
+    }
+}
+
+// Controller Class
+open class Controller {
+    companion object {
+        fun get_vehicle(routingContext: RoutingContext) {
+            // enter code here
+        }
+    }
+}
+
