@@ -21,3 +21,7 @@ The WSL2 terminal must be configured to set and export the DISPLAY environnment 
 
 export LIBGL_ALWAYS_INDIRECT=1
 export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+
+
+under admin powershell run command:
+New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
