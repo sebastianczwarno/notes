@@ -10,6 +10,8 @@ wget https://download.jetbrains.com/rider/JetBrains.Rider-2022.1.1.tar.gz && tar
 mv 'JetBrains Rider-2022.1.1' rider && sudo mv rider /opt/ && sudo chmod 775 /opt/rider/ && \
 sudo chown -R $USER /opt/rider/ && sudo chown -R $USER /opt/rider/bin/ && sudo chmod 775 /opt/rider/bin/rider.sh && \
 sudo ln -s /opt/rider/bin/rider.sh /usr/bin/rider
+sudo chown -R $USER /opt/idea/ && sudo chown -R $USER /opt/idea/bin/ && sudo chmod 775 /opt/idea/bin/idea.sh && \
+sudo ln -s /opt/idea/bin/idea.sh /usr/bin/idea
 
 # network service delaying startup 
 systemctl list-unit-files systemd-{networkd*,resolved}.*
