@@ -13,6 +13,9 @@ sudo ln -s /opt/rider/bin/rider.sh /usr/bin/rider
 sudo chown -R $USER /opt/idea/ && sudo chown -R $USER /opt/idea/bin/ && sudo chmod 775 /opt/idea/bin/idea.sh && \
 sudo ln -s /opt/idea/bin/idea.sh /usr/bin/idea
 
+#correct fonts under firefox flatpak
+sudo apt purge xfonts-75dpi xfonts-100dpi && sudo apt install cups
+
 # network service delaying startup 
 systemctl list-unit-files systemd-{networkd*,resolved}.*
 systemctl disable networking
