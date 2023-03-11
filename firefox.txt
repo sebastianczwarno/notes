@@ -24,9 +24,13 @@ sudo flatpak override --env MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
 
 # flatpak follow gnome theme
 # GTK themes are located in /usr/share/themes and /usr/share/icons
+mkdir -p ~/.themes
+cp -r /usr/share/themes/Adwaita-dark ~/.themes/Adwaita-dark
+cp -r /usr/share/themes/Adwaita ~/.themes/Adwaita
 sudo flatpak override --filesystem=$HOME/.themes
-sudo flatpak override --filesystem=$HOME/.icons
-sudo flatpak override --env=GTK_THEME=my-theme 
+
+# Other optiosn for themes
+sudo flatpak override --env=GTK_THEME=Adwaita-dark
 sudo flatpak override --env=ICON_THEME=my-icon-theme 
 
 # about:config
