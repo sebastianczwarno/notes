@@ -48,3 +48,20 @@ https://github.com/martincostello/dotnet-minimal-api-integration-testing?WT.mc_i
 https://dev.to/jamesmh/the-life-changing-and-time-saving-magic-of-feature-focused-code-organization-1708
 https://www.youtube.com/watch?v=XKN0084p7WQ - minimal api fluent validation, authorisation etc
 https://www.youtube.com/watch?v=4ORO-KOufeU - minimal apis refactoring into features
+
+
+
+# bash parameter completion for the dotnet CLI
+
+function _dotnet_bash_complete()
+{
+  local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n'
+  local candidates
+
+  read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
+
+  read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
+}
+
+complete -f -F _dotnet_bash_complete dotnet
+
