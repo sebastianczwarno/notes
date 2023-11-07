@@ -1,0 +1,42 @@
+based on:
+https://stackoverflow.com/questions/71549856/testcontainers-with-podman-in-java-tests
+https://github.com/testcontainers/testcontainers-java/issues/2088
+
+Just a status report on minimal testing (running JUnit with testcontainers):
+
+    Using Ubuntu 21.04, installed podman 3.0.1 from Ubuntu
+    Podman socket-activated user service is preconfigured and enabled
+    I added export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock to ~/.profile
+    I created ~/.config/containers/registries.conf to set automatic search in docker.io (its the default for Docker servers, but usually isn't for Podman installations) - otherwise docker pull would fail
+    log out and back in to let the profile reload.
+
+Testing works fine - I use testcontainers, mariadb, redis and a few other containers for testing - looks fine so far. Everything is local to my user account and no need for system-wide setups, permissions, etc. The podman command line tool can be used to manage stuff with a bit more fidelity (though you probably want to set up ~/.config/containers.conf file, as detailed below, to help with that).
+Files edited
+~/.config/containers/registries.conf
+
+Set pulls to auto search in Docker Hub and Quay, as Podman's default Ubuntu installation has no auto-search configured at all.
+
+unqualified-search-registries=["docker.io", "quay.io"]
+
+~/.config/containers/containers.conf
+
+This is to get the podman cli to talk to the user service (1000 is my UID, probably yours as well).
+
+[service_destinations.local]
+uri = "unix:///run/user/1000/podman/podman.sock"
+
+Update:
+
+The testcontainers alias was not really needed - what I did need to make Podman behave like Docker enough for Testcontainers was that it will automatically search Docker Hub for non-local images.
+
+Other than that, after a lot more testing I'm very happy with the stability and performance of using Testcontainers with Podman - the only issue I have is that sometimes the resource reaper doesn't manage to stop the containers so testing may leave some around - check your system every now and then to see if you also get this.
+
+
+Enable the Podman service on Linux
+Testcontainers library communicates with Podman using socket file. 
+1. Start Podman service for a regular user (rootless) and make it listen to a socket:
+systemctl --user enable --now podman.socket
+2. Check the Podman service status:
+systemctl --user status podman.socket
+3. Check the socket file exists:
+ls -la /run/user/$UID/podman/podman.sock
