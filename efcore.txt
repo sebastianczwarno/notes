@@ -1,3 +1,4 @@
 # Generation of migration with different dbcontext -p ProjectWithDbContextImplementation -s StartupProject -c NameOfDbContextClassUnderProjectWithDbContextImpl.
-dotnet ef migrations add InitialCreate -p  DnaManager.Infrastructure -s DnaManager.WebApp -c SqliteDataContext --output-dir Persistence/Migrations/SqliteMigrations/
-dotnet ef migrations add InitialCreate -p DnaManager.Infrastructure -s DnaManager.WebApp -c PostgreDataContext --output-dir Persistence/Migrations/PostgreMigrations
+# cd to folder where are projects example: cd src
+dotnet ef migrations add InitialCreate -p  DnaManager.Infrastructure -s DnaManager.Service -c SqliteDataContext --output-dir Persistence/Migrations/SqliteMigrations/
+dotnet ef migrations add InitialCreate -p DnaManager.Infrastructure -s DnaManager.Service -c PostgreDataContext --output-dir Persistence/Migrations/PostgreMigrations
