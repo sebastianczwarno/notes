@@ -1,0 +1,3 @@
+- Installation of Ledger under linux:
+	- Most connection issues occur because Ledger Live doesn’t have the required rights on the computer. Set up udev rules using the following code snippet:
+	  wget -q -O - https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | sudo bash
