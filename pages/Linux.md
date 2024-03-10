@@ -1,1 +1,2 @@
-- Dotnet
+- Dotnet core installation:
+	-
