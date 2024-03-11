@@ -5,4 +5,5 @@
 	  sudo apt-get update && \
 	  sudo apt-get install -y dotnet-sdk-7.0
 - Solution for issue with network service delaying startup
-	- network service delaying startup
+	- systemctl list-unit-files systemd-{networkd*,resolved}.*
+	  systemctl disable networking
